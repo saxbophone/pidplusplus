@@ -20,9 +20,9 @@ class PidController {
         double ki; // Integral gain
         double kd; // Derivative gain
         // calibration default constants
-        extern const double KP_DEFAULT;
-        extern const double KI_DEFAULT;
-        extern const double KD_DEFAULT;
+        static const double KP_DEFAULT;
+        static const double KI_DEFAULT;
+        static const double KD_DEFAULT;
         // actively changing values
         double actual; // The actual reading as measured
         double target; // The desired reading

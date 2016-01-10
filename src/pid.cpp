@@ -46,25 +46,25 @@ void PidController::calibrate() {
 }
 
 // default constructor
-PidController() {
+PidController::PidController() {
     PidController::calibrate();
     PidController::state();
 }
 
 // constructor with provided start values
-PidController(double initial, double target) {
+PidController::PidController(double initial, double target) {
     PidController::calibrate();
     PidController::state(initial, target);
 }
 
 // constructor with provided calibration values
-PidController(double kp, double ki, double kd) {
-    PidController::calibrate(kp, ki, kd)
+PidController::PidController(double kp, double ki, double kd) {
+    PidController::calibrate(kp, ki, kd);
     PidController::state();
 }
 
 // constructor with provided calibration and start values
-PidController(double kp, double ki, double kd, double initial, double target) {
+PidController::PidController(double kp, double ki, double kd, double initial, double target) {
     PidController::calibrate(kp, ki, kd);
     PidController::state(initial, target);
 }
