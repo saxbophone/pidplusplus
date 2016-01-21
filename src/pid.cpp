@@ -47,8 +47,18 @@ void PidController::calibrate() {
 
 // calculate the PID output and store in output attribute
 void PidController::calculate() {
-    // This is where the actual PID algorithm is implemented! - HOW EXCITING :D
-    // TODO: Actually implement the PID algorithm...
+    // Here begins the actual implementation of the PID algorithm
+    // calculate difference between desired and actual values (the error)
+    double error = target - actual;
+    // calculate and update integral
+    integral += (error * time_delta);
+    // calculate derivative
+    double derivative = (error - previous_error) / time_delta;
+    // calculate output value according to algorithm
+    output = (kp * error) + (ki * integral) + (kd * derivative);
+    // update previous_error to the error value calculated on this iteration
+    previous_error = error;
+    // Here ends the PID algorithm
 }
 
 // default constructor
