@@ -66,7 +66,7 @@ class PidController {
         // given the actual value, calculate PID output and return it
         double update(double actual);
         // given the target value and the actual value, calculate PID output and return it
-        double update(double target, double actual);
+        double update(double actual, double target);
 };
 
 
