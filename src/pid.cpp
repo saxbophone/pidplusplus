@@ -45,6 +45,12 @@ void PidController::calibrate() {
     PidController::calibrate(KP_DEFAULT, KI_DEFAULT, KD_DEFAULT);
 }
 
+// calculate the PID output and store in output attribute
+void PidController::calculate() {
+    // This is where the actual PID algorithm is implemented! - HOW EXCITING :D
+    // TODO: Actually implement the PID algorithm...
+}
+
 // default constructor
 PidController::PidController() {
     PidController::calibrate();
@@ -84,4 +90,27 @@ void PidController::recalibrate() {
 void PidController::recalibrate(double kp, double ki, double kd) {
     PidController::calibrate(kp, ki, kd);
     PidController::state();
+}
+
+// retrieve the private output attribute
+double PidController::get_output() {
+    return output;
+}
+
+// calculates the PID output and returns it
+double PidController::update() {
+    PidController::calculate();
+    return PidController::get_output();
+}
+
+// given the actual value, calculate PID output and return it
+double PidController::update(double _actual) {
+    actual = _actual;
+    return PidController::update();
+}
+
+// given the target value and the actual value, calculate PID output and return it
+double PidController::update(double _target, double _actual) {
+    target = _target;
+    return PidController::update(_actual);
 }

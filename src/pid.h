@@ -42,6 +42,8 @@ class PidController {
         void calibrate(double kp, double ki, double kd);
         // sets values of calibration attributes to defaults
         void calibrate();
+        // calculate the PID output and store in output attribute
+        void calculate();
     public:
         // constructors
         PidController(); // default constructor
@@ -57,6 +59,14 @@ class PidController {
         void recalibrate();
         // resets state and updates values of calibration attributes
         void recalibrate(double kp, double ki, double kd);
+        // retrieves the current output value (no calculation performed)
+        double get_output();
+        // calculates the PID output and returns it
+        double update();
+        // given the actual value, calculate PID output and return it
+        double update(double actual);
+        // given the target value and the actual value, calculate PID output and return it
+        double update(double target, double actual);
 };
 
 
