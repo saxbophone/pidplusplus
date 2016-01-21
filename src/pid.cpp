@@ -11,17 +11,17 @@
 #include "pid.h"
 
 
-// set class constants (default calibration values)
-const double PidController::KP_DEFAULT = 1.0;
-const double PidController::KI_DEFAULT = 1.0;
-const double PidController::KD_DEFAULT = 1.0;
+// set class constants (default calibration values) - THESE ARE PROBABLY IMPRACTICAL
+const double PidController::KP_DEFAULT = 0.333333333333333333333333333333333;
+const double PidController::KI_DEFAULT = 0.333333333333333333333333333333333;
+const double PidController::KD_DEFAULT = 0.333333333333333333333333333333333;
 
 // set all state variables to 0.0
 void PidController::state() {
     actual = 0.0;
     target = 0.0;
     output = 0.0;
-    time_delta = 0.0;
+    time_delta = 1.0; // TODO Change this to a constant
     previous_error = 0.0;
     integral = 0.0;
 }
@@ -120,7 +120,7 @@ double PidController::update(double _actual) {
 }
 
 // given the target value and the actual value, calculate PID output and return it
-double PidController::update(double _target, double _actual) {
+double PidController::update(double _actual, double _target) {
     target = _target;
     return PidController::update(_actual);
 }
